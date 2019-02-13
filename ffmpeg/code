@@ -1,0 +1,37 @@
+#Extract the audio from the song
+ffmpeg -i music.mp3 -ss 00:00:00 -to 00:00:10 -acodec copy music1.mp3
+ffmpeg -i music.mp3 -ss 00:01:29 -to 00:01:52 -acodec copy music2.mp3
+ffmpeg -i music.mp3 -ss 00:02:03 -to 00:02:13 -acodec copy music3.mp3
+
+#Combine the song
+nano musicls.txt
+file 'music1.mp3'
+file 'music2.mp3'
+file 'music3.mp3'
+
+ffmpeg -f concat -i musicls.txt -c copy m_output.mp3
+
+#Trans the format from the gif to mp4
+ffmpeg -i giphy1.gif -vf scale=420:-2,format=yuv420p animation1.mp4
+
+#Combine the audio and the video
+ffmpeg -f concat -i video.txt -c copy output.mp4
+
+#Change the velocity of the video
+ffmpeg -i output.mp4 -r 16 -filter:v "setpts=0.75*PTS" output_v.mp4
+
+#Combine the audio and the video
+ffmpeg -i output.mp4 -i m_output.mp3 -map 0:v -map 1:a -c copy -shortest outputfinal.mp4
+
+#Delate the audio from the video (-an)
+ffmpeg -i outputfinal.mp4 -c copy -an outputfinal_nosound.mkv
+
+#Change the video's frame rate and the scale
+ffmpeg -i input.mov -qscale 0 -r 25 -y output.mov 
+ffmpeg -i outputp2.mp4 -vf scale=480:360 video_480.mp4 -hide_banner
+
+#fade in/out the video
+ffmpeg -i output.mp4 -af afade=t=in:st=0:d=3,afade=t=out:st=35:d=5 output_fade.mp4
+
+#Combine the audio and the video
+ffmpeg -i output_nosound.mp4 -i m_output.mp3 -c:v copy -c:a aac -strict experimental Wayne_outputfinal.mp4
