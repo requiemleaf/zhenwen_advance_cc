@@ -240,21 +240,52 @@ void ofApp::keyPressed(int key){
     switch(key){
         case '1':
             functionOne=true;
+            functionTwo=false;
+            functionThree=false;
+            functionFour=false;
+            functionFive=false;
+            functionSix=false;
             break;
         case '2':
             functionTwo=true;
+            functionOne=false;
+            functionThree=false;
+            functionFour=false;
+            functionFive=false;
+            functionSix=false;
             break;
         case '3':
             functionThree=true;
+            functionOne=false;
+            functionTwo=false;
+            functionFour=false;
+            functionFive=false;
+            functionSix=false;
             break;
         case '4':
             functionFour=true;
+            functionOne=false;
+            functionTwo=false;
+            functionThree=false;
+            functionFive=false;
+            functionSix=false;
             break;
         case '5':
             functionFive=true;
+            functionOne=false;
+            functionTwo=false;
+            functionThree=false;
+            functionFour=false;
+            functionSix=false;
             break;
         case '6':
             functionSix=true;
+            functionFive=true;
+            functionOne=false;
+            functionTwo=false;
+            functionThree=false;
+            functionFour=false;
+            functionFive=false;
             break;
 
         case 'r':
