@@ -127,16 +127,16 @@ void ofApp::draw(){
     ofSetColor(255,255,255);
     video.draw(0,0);    //draw the current video frame
     
-    if(functionOne == true){
+    if(functionOne){
         image.draw(0,0);
     }
     
-    if(functionTwo == true){
+    if(functionTwo){
         ofSetColor(255,255,255);
         image2.draw(0,0);
     }
     
-    if(functionThree== true){
+    if(functionThree){
         for(int i=0; i<3; i++){
             for(int j=0; j<3; j++){
                 ofSetRectMode(OF_RECTMODE_CENTER);
@@ -154,7 +154,7 @@ void ofApp::draw(){
         }
     }
     
-    if(functionFour==true){
+    if(functionFour){
         //getting pixels
         ofPixels pixels = video.getPixels();
         
@@ -172,7 +172,7 @@ void ofApp::draw(){
         }
     }
     
-    if (functionFive == true) {
+    if (functionFive) {
         //getting the video's pixels
         ofPixels &pixels = video.getPixels();
         
@@ -200,7 +200,7 @@ void ofApp::draw(){
         }
     }
     
-    if(functionSix == true){
+    if(functionSix){
         image3.draw(0,0);
     }
 
