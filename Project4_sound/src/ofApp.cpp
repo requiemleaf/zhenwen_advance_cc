@@ -45,6 +45,13 @@ void ofApp::setup(){
     gui.add(volumeB.setup("BallVolume",1.0f,0.0f,1.0f));
     gui.add(speedB.setup("BallSoundSpeed",1.0f,0,2.0f));
     
+    // the fft needs to be smoothed out, so I create an array of floats
+    bands=128;
+    fftSmooth=new float [bands];   //smooth the signal
+    for (int i=0; i<bands; i++){
+        fftSmooth[i]=0;
+    }
+    
 }
 
 //--------------------------------------------------------------
@@ -62,6 +69,18 @@ void ofApp::update(){
         float speed = ofMap( pos.x, 0, ofGetWidth(), 0.2, 2 );
     }
    // ofSoundUpdate();
+    
+    
+    float * value =ofSoundGetSpectrum(bands);
+    for (int i=0; i<bands; i++){
+        //let the smoothed value sink to zero
+        fftSmooth[i]*=0.95f;
+        
+        //take the max, either the smoothed or the incoming
+        if(fftSmooth[i]<value[i]){
+            fftSmooth[i]=value[i];
+        }
+    }
 }
 
 //--------------------------------------------------------------
@@ -84,9 +103,10 @@ void ofApp::draw(){
     //ofDrawEllipse(ofGetMouseX(), ofGetMouseY(), mouse_r, mouse_r);
     ofSetColor(0, ofRandom(100,255), ofRandom(100,255), ofRandom(150,255));
     
-    ofFill();
-    
-    ofDrawCircle( pos.x, 800 - pos.y, 60);
+    ofNoFill();
+       for (int i=0; i<bands; i++){
+    ofDrawCircle( pos.x, 800 - pos.y, sin(fftSmooth[i])*200);
+       }
 }
 
 //--------------------------------------------------------------

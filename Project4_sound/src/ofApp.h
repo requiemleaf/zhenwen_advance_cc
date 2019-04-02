@@ -48,6 +48,8 @@ class ofApp : public ofBaseApp{
         ofxFloatSlider speedB;
         ofxFloatSlider volumeB;
     
+        float * fftSmooth;
+        int bands;
     
             
 };
