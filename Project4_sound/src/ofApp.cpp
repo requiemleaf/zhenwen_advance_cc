@@ -39,7 +39,7 @@ void ofApp::setup(){
 
     //set up declared objects
     gui.setup("Parameters");
-    gui.add(play.setup("play"));
+    gui.add(play.setup("CueBallplay"));
     gui.add(volume.setup("CueBallVolume",0.3f,0.0f,1.0f));
     gui.add(speed.setup("CueBallSoundSpeed",1.0f,0,5.0f));
     gui.add(volumeB.setup("BallVolume",1.0f,0.0f,1.0f));
@@ -75,7 +75,6 @@ void ofApp::update(){
     for (int i=0; i<bands; i++){
         //let the smoothed value sink to zero
         fftSmooth[i]*=0.95f;
-        
         //take the max, either the smoothed or the incoming
         if(fftSmooth[i]<value[i]){
             fftSmooth[i]=value[i];
