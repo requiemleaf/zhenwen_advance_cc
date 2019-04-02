@@ -21,7 +21,7 @@ void ofApp::setup(){
     cout << "array Length is " << folderLength << endl;
     
     for ( int i = 0; i < folderLength; i ++ ) {
-        string fileName = "../../../hw_03_drawing_step01/bin/data/img" + ofToString(i) + ".jpg";
+        string fileName = "i/Users/heye/Desktop/Coding/of_v0.10.1_osx_release/apps/zhenwen_advance_cc/project3_drawing_app/Drawing_Application_step01/bin/data/img" + ofToString(i) + ".jpg";
         ofImage img;
         img.load(fileName);
         myImages.push_back(img);
