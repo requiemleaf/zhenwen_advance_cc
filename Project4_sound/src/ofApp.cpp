@@ -97,8 +97,8 @@ void ofApp::draw(){
         //s->playSound();
         s->sound.setSpeed(speedB);
         s->sound.setVolume(volumeB);
-        
-    }    
+    }
+    
     //ofDrawEllipse(ofGetMouseX(), ofGetMouseY(), mouse_r, mouse_r);
     ofSetColor(0, ofRandom(100,255), ofRandom(100,255), ofRandom(150,255));
     
